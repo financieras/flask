@@ -5,16 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Flask</title>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <h1>Operaciones matemáticas con Flask</h1>
     <h2>Suma de dos números</h2>
     <p>Introduzca dos números y pulse el botón para obtener la suma.</p>
     <form action="/" method="POST">
-        <p>Input 1: <input type="number" name="misvalores" value="{{ val1 }}"></p>
-        <p>Input 2: <input type="number" name="misvalores" value="{{ val2 }}"></p>
+        <p>Input 1: <input name="misvalores" value="{{ val1 }}"></p>
+        <p>Input 2: <input name="misvalores" value="{{ val2 }}"></p>
         <input type="submit" value="Sumar">
-        <p>Resultado: <input type="number" name="result_sum" value="{{ result }}"></p>
     </form>
+    <br>
+    <p>Resultado: {{ result }}</p>
 </body>
 </html>
