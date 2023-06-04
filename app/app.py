@@ -69,4 +69,4 @@ def index():
 
 if __name__ == '__main__':
     app.add_url_rule('/', view_func=index)
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
