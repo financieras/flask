@@ -15,17 +15,17 @@ RESET = "\033[0m"
 
 class Jugador:
     def __init__(self, letra, x, y):
-        self.letra = letra
-        self.x = x
-        self.y = y
-        self.puntaje = 0
+        self.letra = letra  # La letra mayúscula del alfabeto es el nombre del jugador
+        self.x = x          # Posición x del jugador en el tablero. x representa el número de fila
+        self.y = y          # Posición y del jugador en el tablero. y representa el número de columna
+        self.puntaje = 0    # Acumulado de puntos, se inicializa en cero
 
     def __str__(self):
         return f'{self.letra} → {self.puntaje}'
     
     def posicion_factible(self, posicion_propuesta):  # si la posición propuesta es factible da True
         nueva_x, nueva_y = posicion_propuesta
-        if (0 <= nueva_x < DIM and 0 <= nueva_y < DIM) and not(self.matrix[nueva_x][nueva_y].isalpha()):
+        if (0 <= nueva_x < HEIGHT and 0 <= nueva_y < WIDTH) and not(self.matrix[nueva_x][nueva_y].isalpha()):
             return True
         return False
 
@@ -58,8 +58,8 @@ class Jugador:
         # CALCULAMOS LA POSICIÓN DE LA COMIDA MÁS CERCANA
         min_distancia = None            # inicializamos la variable
         posicion_comida_cercana = None  # tupla con la posición a la comida más cercana
-        for i in range(DIM):
-            for j in range(DIM):
+        for i in range(HEIGHT):         # HEIGHT representa la altura (filas)
+            for j in range(WIDTH):      # WIDTH representa el ancho (columnas)
                 distance = self.distancia((jugador.x, jugador.y), (i, j))
                 if (min_distancia == None or distance < min_distancia) and matrix[i][j].isdigit():
                     posicion_comida_cercana = (i, j)    # al finalizar los dos bucles tendremos en esta variable la posición a la comida más cercana
@@ -82,12 +82,12 @@ class Comida:
 
 class Board:
     def __init__(self, NUM_PLAYERS, AMOUNT_FOOD):
-        self.matrix = [['·']*DIM for _ in range(DIM)]
+        self.matrix = [['·']*WIDTH for _ in range(HEIGHT)]  # inicializamos la matriz rectangular que representa el tablero
         self.jugadores = []     # array de objetos de la clase Jugador
         self.comidas = []       # array de objetos de la clase Comida
         for i in range(NUM_PLAYERS):    # ubicar jugadores
             while True:
-                (jugador_x, jugador_y) = (randint(0, DIM-1), randint(0, DIM-1))
+                (jugador_x, jugador_y) = (randint(0, HEIGHT-1), randint(0, WIDTH-1))
                 if self.matrix[jugador_x][jugador_y] == '·':
                     break   # ya hemos encontrado sitio libre para el jugador
             self.matrix[jugador_x][jugador_y] = chr(65 + i)    # letras
@@ -95,7 +95,7 @@ class Board:
             self.jugadores.append(jugador)                          # añadimos el objeto al array de objetos
         for i in range(AMOUNT_FOOD):    # ubicar comida
             while True:
-                comida_x, comida_y = randint(0, DIM-1), randint(0, DIM-1)
+                comida_x, comida_y = randint(0, HEIGHT-1), randint(0, WIDTH-1)
                 if self.matrix[comida_x][comida_y] == '·':
                     break   # ya hemos encontrado un sitio libre para la comida
             valor_comida = randint(1, 9)
@@ -172,9 +172,10 @@ class Juego:
 
 
 if "__main__" == __name__:
-    DIM = 42        # dimensión del board cuadrado. Debe ser suficiente para todos los jugadores y una comia
+    HEIGHT = 45 # dimensiones del board
+    WIDTH = 80  # debe ser suficiente para todos los jugadores y una comia
     NUM_PLAYERS = 6 # tienen que estar entre min=2 y max=26
-    AMOUNT_FOOD = DIM**2-NUM_PLAYERS
+    AMOUNT_FOOD = HEIGHT * WIDTH - NUM_PLAYERS  # Llenando todo el tablero de comida
     MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]    # tuplas: Derecha, Izquierda, aBajo, Arriba
     partida = Juego(NUM_PLAYERS, AMOUNT_FOOD)
     partida.jugar()
