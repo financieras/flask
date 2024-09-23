@@ -14,7 +14,6 @@ const Board = ({ board }) => {
 		const cellWidth = width / cols;
 		const cellHeight = height / rows;
 
-		let count = 0;
 
 		// Clear the canvas
 		ctx.clearRect(0, 0, width, height);
@@ -31,10 +30,9 @@ const Board = ({ board }) => {
 				ctx.strokeRect(x, y, cellWidth, cellHeight);
 
 				// Draw the value inside the cell
-				if (isNaN(cell)) {
-					ctx.fillStyle = colours[count].secondary;
-					count++;
-				} else if (!cell)
+				if (isNaN(cell))
+					ctx.fillStyle = colours[cell.charCodeAt(0) - 65].primary;
+				else if (!cell)
 					ctx.fillStyle = 'lightgray';
 				else
 					ctx.fillStyle = 'white';
