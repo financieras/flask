@@ -1,25 +1,25 @@
 .playerContainer {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    background-color: var(--primary);
-    border: 2px solid var(--borders);
-    border-radius: .5em;
-    align-items: center;
-    justify-content: start;
-    gap: 1em;
-    padding: 0 1em;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: var(--primary);
+	border: 2px solid var(--borders);
+	border-radius: .5em;
+	justify-content: start;
+	gap: 1em;
+	padding: 0 1em;
 }
 
 h2 {
-    font-weight: 900;
-    font-size: 3em;
-    color: green;
-    font-style: italic;
-    text-shadow:
-        4px 4px 0 #000;
+	font-weight: 900;
+	font-size: 4em;
+	color: green;
+	font-style: italic;
+	text-shadow:
+		4px 4px 0 #000;
+	margin: 0;
 }
 
 span {
-    font-weight: bolder;
+	font-weight: bolder;
 }

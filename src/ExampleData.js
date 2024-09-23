@@ -1,8 +1,8 @@
 const exmapleData = {
 	"board": [
-		[0, 0, 0],
-		[0, 0, 0],
-		[0, 0, 0]
+		[5, 0, 0],
+		[0, "A", 2],
+		[1, 0, "B"]
 	],
 	"players":
 		[
@@ -10,6 +10,11 @@ const exmapleData = {
 				"name": "A",
 				"algorithm_name": "random",
 				"score": 0
+			},
+			{
+				"name": "B",
+				"algorithm_name": "veryNice",
+				"score": 100000
 			}
 		]
 }

@@ -2,3 +2,28 @@
 	text-align: center;
 	background-color: var(--main);
 }
+
+section {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 2em;
+	max-width: 80em;
+	margin: 0 auto;
+}
+
+.playersContainer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: auto;
+	gap: 1em;
+	overflow: auto;
+	height: fit-content;
+	max-height: 80vh;
+	padding: 1em;
+	border: 2px solid var(--borders);
+	background-color: var(--background-light);
+	border-radius: .25em;
+}
