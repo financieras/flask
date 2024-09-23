@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Board from "./components/board/Board.jsx";
-import testData from "./ExampleData.js";
+import testData from "./data/ExampleData.js";
 import Player from './components/player/Player.jsx';
 
 
@@ -14,7 +14,7 @@ function App() {
 	userData.players.forEach((player, index) => {
 		players.push(
 			<div>
-				<Player player={player} key="index" />
+				<Player player={player} index={index} key="index" />
 			</div>
 		)
 	})

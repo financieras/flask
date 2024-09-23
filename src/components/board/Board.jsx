@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import colours from "../../data/colours.js";
 import './Board.css'
 
 
@@ -13,13 +14,13 @@ const Board = ({ board }) => {
 		const cellWidth = width / cols;
 		const cellHeight = height / rows;
 
+		let count = 0;
+
 		// Clear the canvas
 		ctx.clearRect(0, 0, width, height);
 
 		// Draw each cell and its content
 		board.forEach((row, rowIndex) => {
-			console.log("sdfm");
-
 			row.forEach((cell, colIndex) => {
 				const x = colIndex * cellWidth;
 				const y = rowIndex * cellHeight;
@@ -30,9 +31,10 @@ const Board = ({ board }) => {
 				ctx.strokeRect(x, y, cellWidth, cellHeight);
 
 				// Draw the value inside the cell
-				if (isNaN(cell))
-					ctx.fillStyle = 'green';
-				else if (!cell)
+				if (isNaN(cell)) {
+					ctx.fillStyle = colours[count].secondary;
+					count++;
+				} else if (!cell)
 					ctx.fillStyle = 'lightgray';
 				else
 					ctx.fillStyle = 'white';
