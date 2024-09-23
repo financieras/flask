@@ -21,7 +21,7 @@ class Jugador:
         self.puntaje = 0    # Acumulado de puntos, se inicializa en cero
 
     def __str__(self):
-        return f'{self.letra} → {self.puntaje}.     \tx: {self.x} \ty: {self.y}'
+        return f'{self.letra} → {self.puntaje}'
     
     def posicion_factible(self, posicion_propuesta):  # si la posición propuesta es factible da True
         nueva_x, nueva_y = posicion_propuesta
@@ -45,11 +45,11 @@ class Jugador:
                 contenido_celda = board[nueva_x][nueva_y]
                 if contenido_celda.isdigit() and int(contenido_celda) > maximo_comidas_cercanas:   # si encuentra comida y su valor numérico es > que el maximo
                     maximo_comidas_cercanas = int(contenido_celda)
-                    (dx_max, dy_max) = (dx, dy)     # marca la dirección en la que obtendríamos la máxima comida al finalizar el bucle for
-        if dx_max == 0 and dy_max == 0:             # en este caso no hay comida inmediata y se mueve aleatoriamente
+                    (dx_max, dy_max) = (dx, dy)
+        if dx_max == 0 and dy_max == 0: # en este caso no hay comida inmediata y se mueve aleatoriamente
             return jugador.mover_aleatorio(libertades)
         else:   # en este caso si hay comida inmediata y se retorna la dirección de máximo valor de la comida
-            return dx_max, dy_max   # se debe retornar la tupla (dx, dy) que marca la dirección de máxima comida cercana en alguna celda contígua
+            return dx_max, dy_max   # se debe retornar la tupla (dx, dy)
     
     def distancia(self, posicion_inicial, posicion_final):    # las posiciones son tuplas con la componentes (x,y)
         return abs(posicion_final[0]-posicion_inicial[0]) + abs(posicion_final[1]-posicion_inicial[1])  # retorna un int
@@ -125,11 +125,11 @@ class Board:
             if not(Jugador.posicion_factible(self, (nueva_x, nueva_y))):
                 libertades[count] = False   # jugador ahogado en esa dirección, no puede moverse al tener pared u otro jugador
         if any(libertades):  # da False cuando el jugador está ahogado en todas las direcciones, y entonces pasa turno
-            if jugador.letra == 'A' or jugador.letra == 'B':                                        # <----- Caso del jugador A y B
+            if jugador.letra == 'A' or jugador.letra == 'B':                                                                # <----- Caso del jugador A
                 dx, dy = jugador.mover_hacia_comida(jugador, libertades, self.matrix)
-            elif jugador.letra == 'C' or jugador.letra == 'D':                                      # <----- Caso del jugador C y D 
+            elif jugador.letra == 'C' or jugador.letra == 'D':                                                              # <----- Caso del jugador B
                 dx, dy = jugador.mover_hacia_comida_inmediata(jugador, libertades, self.matrix)
-            else:                                                                                   # para el resto de jugadores se mueve de forma aleatoria
+            else:   # para el resto de jugadores se mueve de forma aleatoria
                 dx, dy = jugador.mover_aleatorio(libertades)
             (nueva_x, nueva_y) = (jugador.x + dx, jugador.y + dy)
 
@@ -156,7 +156,7 @@ class Juego:
     def jugar(self):
         print(self.board)
         print()
-        while self.board.comidas:           # mientras haya comida en el array de comidas
+        while self.board.comidas:
             for jugador in self.board.jugadores:
                 if not self.board.comidas:  # si ya no hay comida en el board
                     break                   # finaliza el juego sin terminar el turno de los otros jugadores
@@ -172,12 +172,10 @@ class Juego:
 
 
 if "__main__" == __name__:
-    HEIGHT = 18 # Altura: número de filas que hay en el tablero
-    WIDTH = 32  # Anchura: número de columnas. La dimensión debe ser suficiente para todos los jugadores y al menos una comia
+    HEIGHT = 45 # dimensiones del board
+    WIDTH = 80  # debe ser suficiente para todos los jugadores y una comia
     NUM_PLAYERS = 6 # tienen que estar entre min=2 y max=26
     AMOUNT_FOOD = HEIGHT * WIDTH - NUM_PLAYERS  # Llenando todo el tablero de comida
-    MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]    # tuplas: Derecha, Izquierda, aBajo, Arriba, o bien EWSN (Este, West, Sur, Norte)
+    MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]    # tuplas: Derecha, Izquierda, aBajo, Arriba
     partida = Juego(NUM_PLAYERS, AMOUNT_FOOD)
     partida.jugar()
-    # Si HEIGHT = 45 y WIDTH = 80 esquina inferior derecha tiene las coordenadas (x, y) = (44, 79)
-    # x oscilaría entre 0 y 44, e y oscliaría entre 0 y 79.
