@@ -23,5 +23,5 @@ npm start
 - Node: 20.17.0
 - NPM: 10.8.2
 - React: 18.3.1
-- Python: 
-- pip: 
+- Python: 3.10.12
+- pip: 22.0.2
