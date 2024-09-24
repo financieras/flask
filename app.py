@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-#from main import datos_iniciales
+#from main import Juego
 
 app = Flask(__name__)
 
@@ -18,7 +18,8 @@ def enviar_algoritmos():
 @app.route('/api/datos', methods=['GET'])
 def obtener_datos():
     # recoger los datos iniciales que vienen del JavaScript
-    result = datos_iniciales(alto)    
+    mijuego = Juego(NUM_PLAYERS, AMOUNT_FOOD)
+    result = mijuego.datos_iniciales(height=18, width=32, num_players=2, amount_food=7)    
     return result
 '''
 
