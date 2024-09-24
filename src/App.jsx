@@ -1,34 +1,27 @@
-import { useState } from 'react';
-import './App.css';
-import Board from "./components/board/Board.jsx";
-import testData from "./data/ExampleData.js";
-import Player from './components/player/Player.jsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Simulation from "./Simulation";
+import Index from "./Index.jsx";
 
 
 function App() {
-
-	const [userData, updateUserData] = useState(testData);
-
-	let players = [];
-
-	userData.players.forEach((player, index) => {
-		players.push(
-			<div>
-				<Player player={player} index={index} key="index" />
-			</div>
-		)
-	})
-
 	return (
-		<div className="App">
-			<h1>Manadas Web</h1>
-			<section>
-				<Board board={userData.board} />
-				<div className="playersContainer">
-					{players}
-				</div>
-			</section>
-		</div>
+		<Router>
+			<Routes>
+				<Route path="/" element={<Index />} />
+				<Route path="/simulation" element={<Simulation />} />
+				{/* 404 page */}
+				<Route path='*' element={
+					<center>
+						<h1>404 | Page not found :(</h1>
+						<p>Sorry, the page you are looking for could not be found.</p>
+						<Link to="/">
+							<a>Go back to home</a>
+						</Link>
+					</center>
+				} />
+			</Routes>
+		</Router>
 	);
 }
 
