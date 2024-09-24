@@ -1,17 +1,12 @@
 from random import randint
-import os
-import time
-
 
 # Constants
-RED = "\033[1;91m"        # Red Bold High Intensty
-GREEN = "\033[1;92m"      # Green Bold High Intensty
-YELLOW = "\033[0;33m"     # Yellow                      #"\033[1;93m"     # Yellow Bold High Intensty
-BLUE = "\033[1;94m"       # Blue Bold High Intensty
-PURPLE = "\033[1;95m"     # Purple Bold High Intensty
-CYAN = "\033[1;96m"       # Cyan Bold High Intensty
-RESET = "\033[0m"
-
+HEIGHT = 18 # Altura: número de filas que hay en el tablero
+WIDTH = 32  # Anchura: número de columnas. La dimensión debe ser suficiente para todos los jugadores y al menos una comia
+NUM_PLAYERS = 6 # tienen que estar entre min=2 y max=26
+AMOUNT_FOOD = HEIGHT * WIDTH - NUM_PLAYERS  # Llenando todo el tablero de comida
+MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]    # tuplas: Derecha, Izquierda, aBajo, Arriba, o bien EWSN (Este, West, Sur, Norte)
+#board # variable global
 
 class Jugador:
     def __init__(self, letra, x, y):
@@ -71,7 +66,7 @@ class Jugador:
             if self.distancia((new_x, new_y), posicion_comida_cercana) == min_distancia-1 and not(matrix[new_x][new_y].isalpha()):
                 return dx, dy
         return jugador.mover_aleatorio(libertades)
-        
+
 
 class Comida:
     def __init__(self, x, y, valor):
@@ -147,6 +142,10 @@ class Juego:
     def __init__(self, NUM_PLAYERS, AMOUNT_FOOD):
         self.board = Board(NUM_PLAYERS, AMOUNT_FOOD)   # instanciamos un objeto de la clase Board
 
+    def datos_iniciales(self, alto):
+        self.alto = alto
+
+
     def imprimir_ranking(self):
         jugadores_ordenados = sorted(self.board.jugadores, key=lambda jugador: jugador.puntaje, reverse=True)
         print("Ranking de jugadores:")
@@ -172,11 +171,6 @@ class Juego:
 
 
 if "__main__" == __name__:
-    HEIGHT = 18 # Altura: número de filas que hay en el tablero
-    WIDTH = 32  # Anchura: número de columnas. La dimensión debe ser suficiente para todos los jugadores y al menos una comia
-    NUM_PLAYERS = 6 # tienen que estar entre min=2 y max=26
-    AMOUNT_FOOD = HEIGHT * WIDTH - NUM_PLAYERS  # Llenando todo el tablero de comida
-    MOVIMIENTOS = [(0, 1), (0, -1), (1, 0), (-1, 0)]    # tuplas: Derecha, Izquierda, aBajo, Arriba, o bien EWSN (Este, West, Sur, Norte)
     partida = Juego(NUM_PLAYERS, AMOUNT_FOOD)
     partida.jugar()
     # Si HEIGHT = 45 y WIDTH = 80 esquina inferior derecha tiene las coordenadas (x, y) = (44, 79)
