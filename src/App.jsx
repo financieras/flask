@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Simulation from "./Simulation";
-import Index from "./Index.jsx";
+import Landing from "./Landing.jsx";
 
 
 function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Index />} />
+				<Route path="/" element={<Landing />} />
 				<Route path="/simulation" element={<Simulation />} />
 				{/* 404 page */}
 				<Route path='*' element={

@@ -1,4 +1,4 @@
-const exmapleData = {
+const exampleData = {
 	board: [
 		[5, "C", 0],
 		[0, "A", 2],
@@ -138,4 +138,4 @@ const exmapleData = {
 	],
 };
 
-export default exmapleData;
+export default exampleData;
