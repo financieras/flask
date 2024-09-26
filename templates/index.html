@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Especifica la codificación de caracteres para el documento -->
     <meta charset="UTF-8">
+    
+    <!-- Configura la vista para dispositivos móviles, asegurando que la escala sea adecuada -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título de la página que se mostrará en la pestaña del navegador -->
     <title>Lanzador de Dados</title>
+    
+    <!-- Enlaza el archivo de estilos CSS externo para dar formato a la página -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    
+    <!-- Enlaza el archivo JavaScript externo que contiene la lógica del juego -->
+    <script src="/static/js/script.js" defer></script>
+    <!-- El atributo 'defer' asegura que el archivo JS se descargue de manera asíncrona y
+         se ejecute solo después de que el HTML haya sido completamente parseado,
+         lo que evita problemas al acceder a elementos del DOM antes de que estén disponibles. -->
 </head>
 <body>
-    <h1>Lanzador de Dados</h1>
-    <label for="numCaras">Número de caras del dado:</label>
-    <input type="number" id="numCaras" min="2" value="6">
-    <button id="jugarBtn">Jugar</button>
-    <p id="resultado"></p>
-
-    <script src="static/js/script.js"></script>
+    <!-- Contenedor principal que agrupa todos los elementos de la interfaz -->
+    <div class="container">
+        <!-- Título principal de la página -->
+        <h1>Lanzador de Dados</h1>
+        
+        <!-- Etiqueta que describe el campo de entrada para el número de caras del dado -->
+        <label for="numCaras">Número de caras del dado:</label>
+        
+        <!-- Campo de entrada numérico donde el usuario puede especificar el número de caras del dado -->
+        <input type="number" id="numCaras" min="2" value="6">
+        
+        <!-- Botón que el usuario puede presionar para lanzar el dado -->
+        <button id="jugarBtn">Jugar</button>
+        
+        <!-- Párrafo donde se mostrará el resultado del lanzamiento del dado -->
+        <p id="resultado"></p>
+    </div>
 </body>
 </html>
