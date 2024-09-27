@@ -1,61 +1,89 @@
 /* Estilos generales */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #e9ecef; /* Color de fondo suave */
+    background-color: #e9ecef;
     margin: 0;
     padding: 0;
-    color: #343a40; /* Color de texto oscuro */
-    line-height: 1.6; /* Mejor lectura */
-}
-
-/* Estilo para el encabezado */
-h1 {
-    color: #ffffff; /* Texto blanco */
-    text-align: center;
-    padding: 20px;
-    background-color: #007bff; /* Azul brillante */
-    border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-}
-
-/* Estilo para los párrafos */
-p {
-    text-align: center;
-    font-size: 1.1em;
-    color: #495057; /* Color gris oscuro */
+    color: #343a40;
+    line-height: 1.6;
 }
 
 /* Contenedor principal */
 .container {
-    max-width: 600px; /* Ancho más pequeño */
-    margin: 50px auto; /* Centrado con margen superior */
+    max-width: 800px;
+    margin: 50px auto;
     padding: 20px;
-    background-color: #ffffff; /* Fondo blanco */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-    border-radius: 10px; /* Bordes redondeados */
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-/* Estilo para enlaces */
-a {
-    color: #007bff; /* Color de enlaces */
-    text-decoration: none; /* Sin subrayado */
+/* Estilo para el encabezado */
+h1 {
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
 }
 
-a:hover {
-    text-decoration: underline; /* Subrayar al pasar el cursor */
+/* Estilos para las opciones del juego */
+.options {
+    margin-bottom: 20px;
 }
 
-/* Estilo para los botones */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+input[type="number"], input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.range-value {
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Estilo para el botón */
 button {
-    background-color: #007bff; /* Color de fondo azul */
-    color: #ffffff; /* Texto blanco */
-    border: none; /* Sin borde */
-    padding: 10px 15px; /* Espaciado */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambiar cursor al pasar */
-    transition: background-color 0.3s; /* Transición suave */
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-size: 1.1em;
 }
 
 button:hover {
-    background-color: #0056b3; /* Color de fondo más oscuro al pasar */
+    background-color: #0056b3;
+}
+
+/* Estilo para el tablero de juego */
+#game-board {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    display: inline-block;
+}
+
+.game-row {
+    display: flex;
+}
+
+.game-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
 }

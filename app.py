@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template
-from game_logic import Juego    # importamos la clase Juego, de ella usaremos el método hacer_tirada
+from game_logic import HungryMonstersGame
 
 app = Flask(__name__)
 
@@ -7,17 +7,21 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/lanzar_dado', methods=['POST'])
-def lanzar_dado_route():
+@app.route('/start_game', methods=['POST'])
+def start_game():
     data = request.json
-    num_caras = data.get('num_caras', 6)
+    height = data.get('height', 18)
+    width = data.get('width', 32)
+    num_players = data.get('num_players', 3)
+    amount_food = data.get('amount_food', 50)
     
-    # Crear instancia de Juego
-    mi_juego = Juego(num_caras)    # instanciamos mi_juego
+    # Crear instancia de HungryMonstersGame
+    game = HungryMonstersGame(height, width, num_players, amount_food)
     
-    # Usar el método de la clase
-    resultado = mi_juego.hacer_tirada() # invocamos el método hacer_tirada de la clase Juego  
-    return jsonify({'resultado': resultado})
+    # Inicializar el tablero
+    board = game.initialize_board()
+    
+    return jsonify({'board': board})
 
 if __name__ == '__main__':
     app.run(debug=True)
