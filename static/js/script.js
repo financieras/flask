@@ -1,4 +1,3 @@
-// Espera a que todo el contenido del DOM esté completamente cargado antes de ejecutar el script
 document.addEventListener('DOMContentLoaded', () => {
     const heightInput = document.getElementById('height');
     const widthInput = document.getElementById('width');
@@ -8,19 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('startBtn');
     const gameBoard = document.getElementById('game-board');
 
-    // Actualiza el valor mostrado de la cantidad de comida
     amountFoodInput.addEventListener('input', () => {
         foodValueDisplay.textContent = `${amountFoodInput.value}%`;
     });
 
-    // Agrega un evento 'click' al botón "Iniciar juego"
     startBtn.addEventListener('click', () => {
         const height = parseInt(heightInput.value);
         const width = parseInt(widthInput.value);
         const numPlayers = parseInt(numPlayersInput.value);
         const amountFood = parseInt(amountFoodInput.value);
 
-        // Realiza una solicitud POST al servidor Flask en la ruta '/start_game'
         fetch('/start_game', {
             method: 'POST',
             headers: {
@@ -57,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let cell of row) {
                 const cellElement = document.createElement('div');
                 cellElement.className = 'game-cell';
+                cellElement.textContent = getCellContent(cell);
                 cellElement.style.backgroundColor = getCellColor(cell);
                 rowElement.appendChild(cellElement);
             }
@@ -65,9 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getCellColor(cell) {
-        if (cell === 'F') return 'green';  // Food
+        if (!isNaN(cell) && cell >= 1 && cell <= 9) return '#e6ffe6';  // Light green for food
         if (cell === '·') return 'white';  // Empty
-        if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(cell)) return 'red';  // Players
+        if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(cell)) return '#ffe6e6';  // Light red for players
         return 'gray';  // Unknown
+    }
+
+    function getCellContent(cell) {
+        if (!isNaN(cell) && cell >= 1 && cell <= 9) return cell;  // Food
+        if (cell === '·') return '';  // Empty
+        if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(cell)) return cell;  // Players
+        return '';  // Unknown
     }
 });
