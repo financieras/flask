@@ -54,24 +54,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cellElement = document.createElement('div');
                 cellElement.className = 'game-cell';
                 cellElement.textContent = getCellContent(cell);
-                cellElement.style.backgroundColor = getCellColor(cell);
+                if (isPlayer(cell)) {
+                    cellElement.classList.add('player-cell');
+                } else if (isFood(cell)) {
+                    cellElement.classList.add('food-cell');
+                }
                 rowElement.appendChild(cellElement);
             }
             gameBoard.appendChild(rowElement);
         }
     }
 
-    function getCellColor(cell) {
-        if (!isNaN(cell) && cell >= 1 && cell <= 9) return '#e6ffe6';  // Light green for food
-        if (cell === '·') return 'white';  // Empty
-        if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(cell)) return '#ffe6e6';  // Light red for players
-        return 'gray';  // Unknown
+    function isPlayer(cell) {
+        return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(cell);
+    }
+
+    function isFood(cell) {
+        return !isNaN(cell) && cell >= 1 && cell <= 9;
     }
 
     function getCellContent(cell) {
-        if (!isNaN(cell) && cell >= 1 && cell <= 9) return cell;  // Food
+        if (isFood(cell)) return cell;  // Food
         if (cell === '·') return '';  // Empty
-        if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(cell)) return cell;  // Players
+        if (isPlayer(cell)) return cell;  // Players
         return '';  // Unknown
     }
 });
