@@ -18,11 +18,7 @@ class HungryMonstersGame:
             self._place_player(player)
 
         # Colocar comida
-        maximo = self.height * self.width - self.num_players
-        if self.amount_food == 0:
-            num_food_cells = 1
-        else:
-            num_food_cells = int(maximo * self.amount_food / 100)
+        num_food_cells = max(1, int((self.height * self.width - self.num_players) * self.amount_food / 100))
         self._place_food(num_food_cells)
 
         return self.board
@@ -34,14 +30,12 @@ class HungryMonstersGame:
             if self.board[y][x] == '·':
                 self.board[y][x] = player
                 break
-
+    
     def _place_food(self, num_food_cells):
-        for _ in range(num_food_cells):
-            while True:
-                x = random.randint(0, self.width - 1)
-                y = random.randint(0, self.height - 1)
-                if self.board[y][x] == '·':
-                    self.board[y][x] = str(random.randint(1, 9))
-                    break
+        empty_cells = [(x, y) for y in range(self.height) for x in range(self.width) if self.board[y][x] == '·']
+        for _ in range(min(num_food_cells, len(empty_cells))):
+            x, y = empty_cells.pop(random.randint(0, len(empty_cells) - 1))
+            self.board[y][x] = str(random.randint(1, 9))
 
-    # Aquí puedes añadir más métodos para la lógica del juego, como mover jugadores, comer comida, etc.
+
+    # Aquí añadiremos más métodos para la lógica del juego, como mover jugadores, comer comida, etc.
