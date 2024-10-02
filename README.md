@@ -1,2 +1,2 @@
-# secret_number
-Juego de adivinar el número secreto con Flask.
+# Juego con Flask
+Juego de adivina el número secreto usando Flask.
