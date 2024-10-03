@@ -17,5 +17,7 @@ def index():
         return jsonify({'resultado': resultado})
     return render_template('index.html', num_caras=num_caras)
 
+
+
 if __name__ == '__main__':
     app.run(debug=True)

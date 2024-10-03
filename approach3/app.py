@@ -5,6 +5,9 @@ import random
 
 app = Flask(__name__)
 
+
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -12,6 +15,9 @@ def index():
         result = random.randint(1, faces)
         return jsonify({'result': result})
     return render_template('index.html')
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
