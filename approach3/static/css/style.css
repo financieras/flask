@@ -7,19 +7,23 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 25%;
     margin: auto;
     overflow: hidden;
     padding: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
     margin-top: 50px;
+    border-radius: 10px; /* Bordes redondeados */
 }
 
 h1 {
-    color: #333;
+    color: #ffffff; /* Texto blanco */
     text-align: center;
+    padding: 20px;
+    background-color: #007bff; /* Azul brillante */
+    border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 form {

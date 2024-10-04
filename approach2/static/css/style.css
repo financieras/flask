@@ -15,8 +15,12 @@ body {
 }
 
 h1 {
+    color: #ffffff; /* Texto blanco */
     text-align: center;
-    color: #333;
+    padding: 20px;
+    background-color: #007bff; /* Azul brillante */
+    border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 form {
