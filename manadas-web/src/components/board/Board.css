@@ -1,0 +1,14 @@
+.boardContainer {
+	width: fit-content;
+	height: fit-content;
+	border: 2px solid var(--borders);
+	border-radius: .25em;
+	background-color: var(--background-light);
+}
+
+.boardCanvas {
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-width: 100%;
+}
