@@ -1,8 +1,81 @@
 body {
-  background-color: rgb(225, 255, 240);
+  font-family: Arial, sans-serif;
+  background-color: #007bff; /* Azul brillante como fondo general */
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+  min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1   {
-  color: blue;
+.container {
+  max-width: 600px;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
+h1 {
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  background-color: #0056b3; /* Un azul más oscuro para el encabezado */
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #218838;
+}
+
+p {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}

@@ -2,22 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../static/imgs/favicon.ico" />
-    <title>Página Flask</title>
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <title>Suma de números</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Operaciones matemáticas con Flask</h1>
-    <h2>Suma de dos números</h2>
-    <p>Introduzca dos números y pulse el botón para obtener la suma.</p>
-    <form action="/" method="POST">
-        <p>Input 1: <input name="misvalores" value="{{ val1 }}"></p>
-        <p>Input 2: <input name="misvalores" value="{{ val2 }}"></p>
-        <input type="submit" value="Sumar">
-    </form>
-    <br>
-    <p>Resultado: {{ result }}</p>
+    <div class="container">
+        <h1>Operaciones matemáticas con Flask</h1>
+        <div class="content">
+            <h2>Suma de números</h2>
+            <p>Introduzca dos números y pulse el botón para obtener la suma.</p>
+            <form action="/" method="post">
+                <label for="valor1">Número 1:</label>
+                <input type="number" id="valor1" name="valor" required step="any">
+                
+                <label for="valor2">Número 2:</label>
+                <input type="number" id="valor2" name="valor" required step="any">
+                
+                <input type="submit" value="Sumar">
+            </form>
+            {% if result %}
+                <p>{{ result }}</p>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
