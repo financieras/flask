@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hola_mundo():
-    return "<h1>¡¡¡Hola mundo!!!</h1><p>El formulario está en http://localhost:5000/formulario</p>"
+    return '<h1>¡¡¡Hola mundo!!!</h1> \
+            <p>El formulario está en <a href="/formulario">http://127.0.0.1:5000/formulario</a></p>'
 
 @app.route('/formulario', methods=['GET', 'POST'])
 def formulario():
