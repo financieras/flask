@@ -1,74 +1,61 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #007bff; /* Azul brillante como fondo general */
-  margin: 0;
-  padding: 20px;
   line-height: 1.6;
-  min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Color de fondo más neutro */
 }
 
 .container {
-  max-width: 600px;
-  width: 100%;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 25%;
+  margin: auto;
   overflow: hidden;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  border-radius: 10px; /* Bordes redondeados */
 }
 
 h1 {
-  color: #ffffff;
+  color: #ffffff; /* Texto blanco */
   text-align: center;
   padding: 20px;
-  background-color: #0056b3; /* Un azul más oscuro para el encabezado */
-  margin: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #007bff; /* Azul brillante */
+  border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 .content {
   padding: 20px;
 }
 
-h2 {
-  color: #333;
-  margin-top: 0;
-}
-
-form {
-  margin-top: 20px;
-}
-
 label {
+  margin-bottom: 10px;
   display: block;
-  margin-bottom: 5px;
-  color: #555;
+  color: #555; /* Color del texto del label */
 }
 
 input[type="number"] {
-  width: 100%;
+  width: 100%; /* Ajustar al tamaño del formulario */
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
-input[type="submit"] {
-  background-color: #28a745;
+button {
+  background-color: #4CAF50; /* Verde para el botón */
   color: white;
+  padding: 10px 20px;
   border: none;
-  padding: 12px 20px;
-  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  width: 100%;
+  width: 100%; /* Botón ocupa todo el ancho */
 }
 
-input[type="submit"]:hover {
-  background-color: #218838;
+button:hover {
+  background-color: #45a049; /* Efecto hover */
 }
 
 p {
