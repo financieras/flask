@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Operaciones matemáticas con Flask</h1>
+        
+        <div class="content">
+            <h2>Suma de números</h2>
+            
+            <!-- Mensajes flash -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <!-- Formulario -->
+            <form method="POST" action="{{ url_for('index') }}" id="calculadora-form">
+                <div class="input-group" id="inputs-container">
+                    <div class="input-wrapper">
+                        <label for="valor1">Número 1:</label>
+                        <input type="number" name="valor" id="valor1" step="any" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="valor2">Número 2:</label>
+                        <input type="number" name="valor" id="valor2" step="any" required>
+                    </div>
+                </div>
+                
+                <button type="button" id="agregar-numero" class="btn-secondary">
+                    Agregar otro número
+                </button>
+                
+                <button type="submit" class="btn-primary">
+                    Calcular suma
+                </button>
+            </form>
+
+            {% if result is not none %}
+            <div class="result">
+                <h3>Resultado:</h3>
+                <p>{{ result }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('agregar-numero').addEventListener('click', function() {
+            const container = document.getElementById('inputs-container');
+            const numInputs = container.children.length + 1;
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = 'input-wrapper';
+            
+            wrapper.innerHTML = `
+                <label for="valor${numInputs}">Número ${numInputs}:</label>
+                <input type="number" name="valor" id="valor${numInputs}" step="any" required>
+            `;
+            
+            container.appendChild(wrapper);
+        });
+    </script>
+</body>
+</html>

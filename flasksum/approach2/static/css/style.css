@@ -1,0 +1,152 @@
+/* Variables CSS para consistencia */
+:root {
+  --primary-color: #007bff;
+  --success-color: #4CAF50;
+  --error-color: #dc3545;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+  --border-radius: 8px;
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}
+
+/* Encabezados */
+h1 {
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin: 0;
+}
+
+.content {
+  padding: 2rem;
+}
+
+/* Formulario */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-wrapper {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Botones */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+button:hover {
+  filter: brightness(90%);
+}
+
+/* Alertas y mensajes */
+.alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+}
+
+.alert-error {
+  background-color: #ffe6e6;
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+/* Resultado */
+.result {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #e9ecef;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.result h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.result p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+      width: 95%;
+      margin: 1rem auto;
+  }
+  
+  .content {
+      padding: 1rem;
+  }
+}
