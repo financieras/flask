@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungry Monsters</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <main class="main-container">        
+        <div class="form-container">
+            <h1>Hungry Monsters</h1>
+            <div class="options">
+                <label for="height">Altura del tablero:</label>
+                <input type="number" id="height" min="5" max="27" value="18">
+                
+                <label for="width">Anchura del tablero:</label>
+                <input type="number" id="width" min="6" max="48" value="32">
+                
+                <label for="num-players">Número de jugadores:</label>
+                <input type="number" id="num-players" min="2" max="26" value="3">
+                
+                <label for="amount-food">Cantidad de comida (%):</label>
+                <input type="range" id="amount-food" min="0" max="100" value="50">
+                <div id="food-value" class="range-value">50%</div>
+            </div>
+            <button id="startBtn">Iniciar juego</button>
+        </div>
+        <div class="board-container">
+            <div id="game-board"></div>
+        </div>
+    </main>
+        
+    <noscript>
+        <p>Este juego requiere JavaScript para funcionar. Por favor, habilite JavaScript en su navegador.</p>
+    </noscript>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

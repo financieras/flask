@@ -1,0 +1,126 @@
+/* Estilos generales */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #e9ecef;
+    margin: 0;
+    padding: 0;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    max-width: 400px;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px 30px; /* El segundo valor (30px) establece el padding derecho */
+    padding-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del tablero */
+.board-container {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block;
+}
+
+/* Estilo para el encabezado */
+h1 {
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: -20px -20px 20px -20px;
+}
+
+/* Estilos para las opciones del juego */
+.options {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+input[type="number"], input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.range-value {
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Estilo para el botón */
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-size: 1.1em;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el tablero de juego */
+#game-board {
+    border: 1px solid #ddd;
+    display: inline-block;
+}
+
+.game-row {
+    display: flex;
+}
+
+.game-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    font-size: 10px;
+}
+
+/* Estilos para celdas de jugadores y comida */
+.player-cell {
+    background-color: #ff4d4d;  /* Rojo vivo */
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.food-cell {
+    background-color: #e6ffe6;  /* Verde claro */
+    font-size: 8px;
+    font-weight: normal;
+}
